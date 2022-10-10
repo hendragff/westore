@@ -21,6 +21,9 @@ Route::get('/', function () {
 Route::get('/main', function () {
     return view('main');
 });
+Route::get('/masterpegawai', function () {
+    return view('admin.masterpegawai');
+});
 
 Route::get('/login', [loginCtrl::class, 'index']);
 Route::get('/register', [registerCtrl::class, 'index']);

@@ -22,6 +22,9 @@ Route::get('/', function () {
 Route::get('/main', function () {
     return view('main');
 });
+Route::get('/masterpegawai', function () {
+    return view('admin.masterpegawai');
+});
 
 // login and register  routes
 Route::get('/register', [registerCtrl::class, 'index']);

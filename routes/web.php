@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginCtrl;
 use App\Http\Controllers\registerCtrl;
@@ -15,7 +16,7 @@ use App\Http\Controllers\registerCtrl;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
 
 Route::get('/main', function () {
@@ -25,5 +26,6 @@ Route::get('/masterpegawai', function () {
     return view('admin.masterpegawai');
 });
 
+Route::resource('/masterbarang', BarangController::class);
 Route::get('/login', [loginCtrl::class, 'index']);
 Route::get('/register', [registerCtrl::class, 'index']);

@@ -31,10 +31,10 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">@yield('content-title')</h1>
-
+                    @yield('main')
                 </div>
                 <!-- /.container-fluid -->
-
+               
             </div>
             <!-- End of Main Content -->
 

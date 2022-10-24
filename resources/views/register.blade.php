@@ -19,27 +19,23 @@
                             </div>
                             <form class="user">
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="name" for="name"
+                                            placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" class="form-control form-control-user" id="email" for="email"
                                         placeholder="Email Address">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                        <input type="password" class="form-control form-control-user" for="password"
+                                            id="password" placeholder="Password">
                                     </div>
                                 </div>
                                 <a href="/login" class="btn btn-primary btn-user btn-block">
-                                    Register Account
+                                    Register!
                                 </a>
                             </form>
                             <hr>
@@ -59,6 +55,6 @@
 </body>
 <style>
         body{
-                background-image: linear-gradient(45deg, #787FF6, #4ADEDE) 
+                background-image: linear-gradient(115deg, #787FF6, #4ADEDE) 
         }
     </style>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginCtrl;
 use App\Http\Controllers\registerCtrl;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,5 +23,8 @@ Route::get('/main', function () {
     return view('main');
 });
 
-Route::get('/login', [loginCtrl::class, 'index']);
+// login and register  routes
 Route::get('/register', [registerCtrl::class, 'index']);
+Route::get('/login', [loginCtrl::class, 'index'])->name('login');
+Route::post('/login', [loginCtrl::class, 'authenticate'])->name('auth');
+Route::post('/logout', [loginCtrl::class, 'logout']);    

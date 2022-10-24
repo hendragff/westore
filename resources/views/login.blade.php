@@ -32,6 +32,7 @@
                                             <input type="password" class="form-control form-control-user"
                                                 id="password" name="password" placeholder="Password">
                                         </div>
+<<<<<<< HEAD
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
@@ -40,6 +41,11 @@
                                             </div>
                                         </div>
                                         <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
+=======
+                                        <a href="" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </a>
+>>>>>>> 407dad4adeb2a0642b8d2baf1b5b12aeee66a5af
                                     </form>
                                     <hr>
                                     <div class="text-center">

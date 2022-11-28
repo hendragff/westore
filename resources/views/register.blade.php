@@ -17,26 +17,36 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            @if (count($errors)>0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                            <form class="user" action="{{route('register.store')}}" method="POST">
+                                @csrf
                                 <div class="form-group row">
-                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="name" for="name"
-                                            placeholder="Name">
+                                    <div class="col-sm-12 mb-3 mb-sm-0" for="name">
+                                        <input type="text" class="form-control form-control-user" id="name" 
+                                            placeholder="Name" name="name">
+                                    </div>
+                                </div>
+                                <div class="form-group" for="email">
+                                    <input type="email" class="form-control form-control-user" id="email" 
+                                        placeholder="Email Address" name="email">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 mb-3 mb-sm-0"  for="password">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="password" placeholder="Password" name="password">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="email" for="email"
-                                        placeholder="Email Address">
+                                    <input type="submit" class="btn btn-primary btn-user btn-block" value="Register!">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-12 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" for="password"
-                                            id="password" placeholder="Password">
-                                    </div>
-                                </div>
-                                <a href="/login" class="btn btn-primary btn-user btn-block">
-                                    Register!
-                                </a>
                             </form>
                             <hr>
                             <div class="text-center">

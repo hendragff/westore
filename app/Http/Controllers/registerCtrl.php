@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -58,7 +59,7 @@ class registerCtrl extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

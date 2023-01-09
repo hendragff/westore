@@ -1,4 +1,9 @@
 @include('admin/head')
+@section('SB ADMIN' , 'Items Page')
+@section('title' , 'Items')
+@section('content-title', 'Items')
+@section('main')
+
 <!DOCTYPE html>
 <html lang="en">
 <body id="page-top">
@@ -20,6 +25,91 @@
                 </div>
                 <!-- /.container-fluid -->
             </div>
+            <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Item') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <table class="table table-responsive table-striped">
+                        <thead>
+                            <td>#</td>
+                            <td>Kategori</td>
+                            <td>Item</td>
+                            <td>Stock</td>
+                            <td>Price</td>
+                            <td>Action</td>
+                        </thead>
+                        <tr>
+                            <td>1</td>
+                            <td>Makanan</td>
+                            <td>Mie Instan</td>
+                            <td>10</td>
+                            <td>3000</td>
+                            <td>
+                                <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
+                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>2</td>
+                            <td>Minuman</td>
+                            <td>Teh</td>
+                            <td>5</td>
+                            <td>5000</td>
+                            <td>
+                                <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
+                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- {{ __('You are logged in!') }} -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">{{__('Add Item')}}</div>
+                <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{session('status')}}
+                    </div>
+                    @endif
+                    <form action="">
+                        <div class="form-group">
+                            <label for="">Kategori</label>
+                            <select name="" id="" class="form-control  form-select">
+                                <option value="1">Makanan</option>
+                                <option value="2">Minuman</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nama Item</label>
+                            <input type="text" class="form-control" name="nama" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Stok</label>
+                            <input type="text" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Price</label>
+                            <input type="text" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
+                        </div>
+                        <input type="submit" class="btn btn-sm text-light btn-success" value="Submit">
+                        <input type="submit" class="btn btn-sm text-light btn-danger" value="Batal">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
             <!-- End of Main Content -->
             
             @include('admin/footer')

@@ -1,4 +1,9 @@
 @include('admin/head')
+@section('SB ADMIN' , 'Pegawai Page')
+@section('title' , 'Pegawai')
+@section('content-title', 'Pegawai')
+@section('main')
+
 <!DOCTYPE html>
 <html lang="en">
 <body id="page-top">
@@ -20,6 +25,88 @@
                 </div>
                 <!-- /.container-fluid -->
             </div>
+            <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Master Karyawan') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <table class="table table-responsive table-striped">
+                        <thead>
+                            <td>#</td>
+                            <td>Nama</td>
+                            <td>Alamat</td>
+                            <td>Email</td>
+                            <td>Nomor Telepon</td>
+                            <td>Action</td>
+                        </thead>
+                        <tr>
+                            <td>1</td>
+                            <td>Ferdian</td>
+                            <td>Wonokromo</td>
+                            <td>ferdian@gmail.com</td>
+                            <td>300023940329</td>
+                            <td>
+                                <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
+                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
+                            </td>
+                            </tr>
+                            <tr>
+                            <td>2</td>
+                            <td>Achmad</td>
+                            <td>Kenjeran</td>
+                            <td>achmad@gmail.com</td>
+                            <td>598347599090</td>
+                            <td>
+                                <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
+                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- {{ __('You are logged in!') }} -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">{{__('Add Karyawan')}}</div>
+                <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{session('status')}}
+                    </div>
+                    @endif
+                    <form action="">
+                        <div class="form-group">
+                            <label for="">Nama</label>
+                            <input type="text" class="form-control" name="nama" id="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Alamat</label>
+                            <input type="text" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="">No. Telepon</label>
+                            <input type="number" class="form-control" name="" id="" style="margin-bottom: 5px;">
+                        </div>
+                        <input type="submit" class="btn btn-sm text-light btn-success" value="Submit">
+                        <input type="submit" class="btn btn-sm text-light btn-danger" value="Batal">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
             <!-- End of Main Content -->
             
             @include('admin/footer')

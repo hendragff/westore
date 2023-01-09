@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\itemCtrl;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginCtrl;
+use App\Http\Controllers\pegawaiCtrl;
 use App\Http\Controllers\registerCtrl;
 // use App\Http\Controllers\regControl;
 
@@ -35,6 +37,8 @@ Route::get('/dashboard', function () {
 // login and register  routes
 // =======
 Route::resource('/masterbarang', BarangController::class);
+Route::resource('/masterpegawai', pegawaiCtrl::class);
+Route::resource('/masterbarang', itemCtrl::class);
 Route::resource('/register',registerCtrl::class);
 // Route::get('',registerCtrl::class, 'index')->name('baru');
 // Route::get('/reg', [regControl::class, 'index']);

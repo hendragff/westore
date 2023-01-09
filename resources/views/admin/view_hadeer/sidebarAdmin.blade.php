@@ -27,9 +27,9 @@
 
             <!-- Nav Item - Master Siswa -->
             <li class="nav-item">
-            <a class="nav-link {{ ($elementActive == 'mastersiswa') ? 'active' : ''}}" href="/mastersiswa">
-                <i class="fas fa-fw fa-solid fa-user-astronaut"></i>
-                    <span>Master Siswa</span>
+            <a class="nav-link {{ ($elementActive == '') ? 'active' : ''}}" href="/masterpegawai">
+                <i class="fas fa-fw fa-solid fa-user"></i>
+                    <span>Master Karyawan</span>
                 </a>
             </li>
             <!-- Divider -->
@@ -37,25 +37,25 @@
             <!-- Heading -->
             <!-- Nav Item - Master Project -->
             <li class="nav-item link">
-                <a class="nav-link {{ ($elementActive == 'masterproject') ? 'active' : ''}}" href="/masterproject">
-                <i class="fas fa-fw fa-solid fa-copy"></i>
-                    <span>Master Project</span>
+                <a class="nav-link {{ ($elementActive == 'masterproject') ? 'active' : ''}}" href="/masterbarang">
+                <i class="fas fa-fw fa-solid fa-box"></i>
+                    <span>Master Barang</span>
                 </a>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <!-- <hr class="sidebar-divider my-0"> -->
 
             <!-- Heading -->
             
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item link">
+            <!-- <li class="nav-item link">
                 <a class="nav-link {{ ($elementActive == 'masterkontak') ? 'active' : ''}}" href="/masterkontak">
                 <i class="fas fa-fw fa-solid fa-address-book"></i>
                     <span>Master Kontak</span>
                 </a>
-            </li>
+            </li> -->
             <!-- Nav Item - Charts -->
             
 

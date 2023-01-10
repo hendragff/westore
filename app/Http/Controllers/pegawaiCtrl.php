@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class registerCtrl extends Controller
+class pegawaiCtrl extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,7 @@ class registerCtrl extends Controller
      */
     public function index()
     {
-        return view('register');
+        return view('admin.view_hadeer.mainKaryawan');
     }
 
     /**
@@ -25,7 +23,7 @@ class registerCtrl extends Controller
      */
     public function create()
     {
-        return view('register');
+        //
     }
 
     /**
@@ -36,19 +34,7 @@ class registerCtrl extends Controller
      */
     public function store(Request $request)
     {
-        $message =[
-            'required' => ':attribute harap diisi dahulu',
-            'min' => ':attribute minimal :min',
-            'unique' => ':attribute sudah ada, harap ganti',
-            'max' => ':attribute maksimal :max karakter gaes',
-        ];
-        $this->validate($request,[
-            'name' => 'required|min:5',
-            'email' => 'required|unique:users',
-            'password' => 'required|min:8',
-        ],$message);
-        User::create(["name"=>$request->name, "password"=>bcrypt($request->password), "email"=>$request->email]);
-        return redirect('/login');
+        //
     }
 
     /**
@@ -59,7 +45,7 @@ class registerCtrl extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**

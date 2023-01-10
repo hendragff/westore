@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\itemCtrl;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginCtrl;
+use App\Http\Controllers\pegawaiCtrl;
 use App\Http\Controllers\registerCtrl;
+// use App\Http\Controllers\regControl;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,14 +29,20 @@ Route::get('/main', function () {
 Route::get('/masterpegawai', function () {
     return view('admin.masterpegawai');
 });
+Route::get('/dashboard', function () {
+    return view('admin.view_hadeer.dashboard');
+});
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 // login and register  routes
-=======
+// =======
 Route::resource('/masterbarang', BarangController::class);
+Route::resource('/masterpegawai', pegawaiCtrl::class);
+Route::resource('/masterbarang', itemCtrl::class);
+Route::resource('/register',registerCtrl::class);
+// Route::get('',registerCtrl::class, 'index')->name('baru');
+// Route::get('/reg', [regControl::class, 'index']);
 Route::get('/login', [loginCtrl::class, 'index']);
->>>>>>> 407dad4adeb2a0642b8d2baf1b5b12aeee66a5af
-Route::get('/register', [registerCtrl::class, 'index']);
 Route::get('/login', [loginCtrl::class, 'index'])->name('login');
 Route::post('/login', [loginCtrl::class, 'authenticate'])->name('auth');
 Route::post('/logout', [loginCtrl::class, 'logout']);    

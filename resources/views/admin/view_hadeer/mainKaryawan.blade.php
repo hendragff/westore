@@ -1,7 +1,7 @@
 @include('admin/head')
-@section('SB ADMIN' , 'Pegawai Page')
-@section('title' , 'Pegawai')
-@section('content-title', 'Pegawai')
+@section('SB ADMIN' , 'Karyawan Page')
+@section('title' , 'Karyawan')
+@section('content-title', 'Karyawan')
 @section('main')
 
 <!DOCTYPE html>

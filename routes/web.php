@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\itemCtrl;
+use App\Http\Controllers\transactionCtrl;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginCtrl;
 use App\Http\Controllers\pegawaiCtrl;
@@ -39,6 +40,7 @@ Route::get('/dashboard', function () {
 Route::resource('/masterbarang', BarangController::class);
 Route::resource('/masterpegawai', pegawaiCtrl::class);
 Route::resource('/masterbarang', itemCtrl::class);
+Route::get('history', [transactionCtrl::class, 'history']);
 Route::resource('/register',registerCtrl::class);
 // Route::get('',registerCtrl::class, 'index')->name('baru');
 // Route::get('/reg', [regControl::class, 'index']);

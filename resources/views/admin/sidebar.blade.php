@@ -71,3 +71,8 @@
     <!-- Heading -->
     
 </ul>
+<style>
+    body{
+                background-image: linear-gradient(180deg, #787FF6, #4ADEDE) 
+        }
+</style>

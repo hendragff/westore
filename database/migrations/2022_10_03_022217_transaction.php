@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('transaction', function (Blueprint $table){
             $table->id();
-            $table->integer('type_id');
-            $table->char('trans_code');//nyambung ke transaction type
-            $table->date('trans_date');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->datetime('date');
+            $table->unsignedBigInteger('total');
+            $table->unsignedBigInteger('pay_total');
             $table->timestamps();
         });
     }

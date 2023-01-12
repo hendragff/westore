@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carts;
 use Illuminate\Http\Request;
 
-class itemCtrl extends Controller
+class CartsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class itemCtrl extends Controller
      */
     public function index()
     {
-        return view('admin.view_hadeer.mainItem');
+        //
     }
 
     /**
@@ -40,10 +41,10 @@ class itemCtrl extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Carts  $carts
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Carts $carts)
     {
         //
     }
@@ -51,22 +52,22 @@ class itemCtrl extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Carts  $carts
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Carts $carts)
     {
-        return view('admin.view_hadeer.edititem');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Carts  $carts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Carts $carts)
     {
         //
     }
@@ -74,10 +75,10 @@ class itemCtrl extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Carts  $carts
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Carts $carts)
     {
         //
     }

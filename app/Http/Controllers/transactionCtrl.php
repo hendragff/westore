@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class itemCtrl extends Controller
+class transactionCtrl extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class itemCtrl extends Controller
      */
     public function index()
     {
-        return view('admin.view_hadeer.mainItem');
+        //
     }
 
     /**
@@ -56,7 +56,7 @@ class itemCtrl extends Controller
      */
     public function edit($id)
     {
-        return view('admin.view_hadeer.edititem');
+        //
     }
 
     /**
@@ -80,5 +80,10 @@ class itemCtrl extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function history()
+    {
+        return view('admin.view_hadeer.historytransaction');
     }
 }

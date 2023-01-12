@@ -1,5 +1,7 @@
 
 <?= $elementActive = "";?>
+<body>
+    
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -71,4 +73,11 @@
             </div>
 
         </ul>
+
+        <style>
+            #accordionSidebar{
+                background-image: linear-gradient(180deg, #395fcf, #a3d1ff) 
+        }
+        </style>
         <!-- End of Sidebar -->
+        </body>

@@ -13,7 +13,7 @@ class pegawaiCtrl extends Controller
      */
     public function index()
     {
-        return view('admin.view_hadeer.mainKaryawan');
+        return view('admin.view_hadeer.mainPegawai');
     }
 
     /**

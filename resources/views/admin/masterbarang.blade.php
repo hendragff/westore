@@ -13,27 +13,28 @@
             <div class="card-body">
                 <table class="table">
                     <thead>
-                        <th>No</th>                         
-                        <th>Nama Barang</th>
-                        <th>Deskripsi Barang</th>
-                        <th>Jumlah Barang</th>
-                        <th>Action</th>
+                        <th>#</th>                         
+                        <th>Category</th>
+                        <th>Name</th>
+                        <th>Stock</th>
+                        <th>Price</th>
                     </thead>
                     <tbody>
-                        <?php $i = 1     ?>
+    
                         @foreach ($data as $item)
                         <tr>
-                            <th>{{$i++}}</th>                             
-                            <td>{{$item->item_name}}</td>
-                            <td>{{$item->item_desc}}</td>
-                            <td>{{$item->item_qtt}}</td>
+                            <th>{{$loop->iteration}}</th>                             
+                            <td>{{$item->category_id}}</td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->stock}}</td>
+                            <td>{{$item->price}}</td>
                             <td>
                                 <a href="masterbarang/{{$item->id}}/edit" class="btn btn-warning btn-circle btn-sm"> <i class="fas fa-edit"></i></a>    
                                 <a href="" class="btn btn-danger btn-circle btn-sm"> <i class="fas fa-trash"></i></a>    
                             </td>
                         </tr>
-                    </tbody>
-                    @endforeach
+                        @endforeach
+                    </tbody>                  
                 </table>
             </div>
         </div>

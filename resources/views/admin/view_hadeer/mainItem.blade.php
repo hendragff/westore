@@ -6,25 +6,28 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<body id="page-top">
+<body id="">
     
     <!-- Page Wrapper -->
     <div id="wrapper">
+        
         @include('admin/view_hadeer/sidebarAdmin')
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class=" flex-column">
         
             <!-- Main Content -->
             <div id="content">
             @include('admin/topbar')
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Admin @yield('content-title') Page</h1>
-                    @yield('content')
-                </div>
-                <!-- /.container-fluid -->
             </div>
+            @if (count($errors)>0)
+            <div class="alert alert-danger">
+                <ul>@foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                  
+                </ul>
+            </div>
+        @endif
             <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -37,7 +40,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <table class="table table-responsive table-striped">
+                    <table class="table table-responsive-striped">
                         <thead>
                             <td>#</td>
                             <td>Kategori</td>
@@ -47,27 +50,19 @@
                             <td>Action</td>
                         </thead>
                         <tr>
-                            <td>1</td>
-                            <td>Makanan</td>
-                            <td>Mie Instan</td>
-                            <td>10</td>
-                            <td>3000</td>
+                            <?php $i = 1 ?>
+                            @foreach ($data as $item)
+                            <td>{{$i++}}</td>
+                            <td>{{$item->category_id}}</td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->stock}}</td>
+                            <td>{{$item->price}}</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
+                                <a href="masteritem/{{$item->id}}/edit" class="btn btn-sm btn-warning text-light">Edit</a>
                                 <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
                             </td>
                             </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Minuman</td>
-                            <td>Teh</td>
-                            <td>5</td>
-                            <td>5000</td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
-                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
-                            </td>
-                        </tr>
+                            @endforeach
                     </table>
                     <!-- {{ __('You are logged in!') }} -->
                 </div>
@@ -82,25 +77,30 @@
                         {{session('status')}}
                     </div>
                     @endif
-                    <form action="">
-                        <div class="form-group">
-                            <label for="">Kategori</label>
-                            <select name="" id="" class="form-control  form-select">
-                                <option value="1">Makanan</option>
-                                <option value="2">Minuman</option>
+                    <form method="POST" enctype="multipart/form-data" action="{{route('masteritem.store')}}">
+                        @csrf
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label for="inputGroupSelect01" class="input-group-text"></label>
+                            </div>
+                            <select name="category_id" id="inputGroupSelect01" class="custom-select">
+                                <option selected>-</option>                    
+                                @foreach ($category as $ctg)
+                                <option value="{{$ctg->id}}">{{$ctg->name}}</option>
+                                @endforeach                   
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="">Nama Item</label>
-                            <input type="text" class="form-control" name="nama" id="">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="name" id="">
                         </div>
                         <div class="form-group">
                             <label for="">Stok</label>
-                            <input type="text" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
+                            <input type="text" class="form-control" name="stock" id="" style="margin-bottom: 5px;">
                         </div>
                         <div class="form-group">
                             <label for="">Price</label>
-                            <input type="text" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
+                            <input type="text" class="form-control" name="price" id="" style="margin-bottom: 5px;">
                         </div>
                         <input type="submit" class="btn btn-sm text-light btn-success" value="Submit">
                         <input type="submit" class="btn btn-sm text-light btn-danger" value="Batal">
@@ -110,15 +110,17 @@
         </div>
     </div>
 </div>
-            <!-- End of Main Content -->
-            
-            @include('admin/footer')
 
+            <!-- End of Main Content -->
+          
+          
         </div>
         <!-- End of Content Wrapper -->
-
+        
     </div>
+    
     <!-- End of Page Wrapper -->
+      
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

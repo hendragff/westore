@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\itemCtrl;
+use App\Http\Controllers\categoryCtrl;
 use App\Http\Controllers\transactionCtrl;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginCtrl;
@@ -42,6 +43,7 @@ Route::resource('/masterpegawai', pegawaiCtrl::class);
 Route::resource('/masteritem', itemCtrl::class);
 Route::get('history', [transactionCtrl::class, 'history']);
 Route::resource('/register',registerCtrl::class);
+Route::resource('/mastercategory',categoryCtrl::class);
 // Route::get('',registerCtrl::class, 'index')->name('baru');
 // Route::get('/reg', [regControl::class, 'index']);
 Route::get('/login', [loginCtrl::class, 'index']);

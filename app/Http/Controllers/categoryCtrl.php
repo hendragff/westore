@@ -13,7 +13,7 @@ class categoryCtrl extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.view_hadeer.maincategory');
     }
 
     /**

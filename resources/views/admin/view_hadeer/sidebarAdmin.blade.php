@@ -46,18 +46,18 @@
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <!-- Divider -->
-            <!-- <hr class="sidebar-divider my-0"> -->
+            <hr class="sidebar-divider my-0">
 
             <!-- Heading -->
             
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item link">
-                <a class="nav-link {{ ($elementActive == 'masterkontak') ? 'active' : ''}}" href="/masterkontak">
-                <i class="fas fa-fw fa-solid fa-address-book"></i>
-                    <span>Master Kontak</span>
+            <li class="nav-item link">
+                <a class="nav-link {{ ($elementActive == 'masterkontak') ? 'active' : ''}}" href="/mastercategory">
+                <i class="fas fa-fw fa-solid fa-braille"></i>
+                    <span>Master Kategori</span>
                 </a>
-            </li> -->
+            </li>
             <!-- Nav Item - Charts -->
             
 

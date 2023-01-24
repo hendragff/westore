@@ -21,7 +21,7 @@ use App\Http\Controllers\registerCtrl;
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('admin.view_hadeer.dashboard');
 });
 
 Route::get('/main', function () {
@@ -39,7 +39,7 @@ Route::get('/dashboard', function () {
 // =======
 Route::resource('/masterbarang', BarangController::class);
 Route::resource('/masterpegawai', pegawaiCtrl::class);
-Route::resource('/masterbarang', itemCtrl::class);
+Route::resource('/masteritem', itemCtrl::class);
 Route::get('history', [transactionCtrl::class, 'history']);
 Route::resource('/register',registerCtrl::class);
 // Route::get('',registerCtrl::class, 'index')->name('baru');

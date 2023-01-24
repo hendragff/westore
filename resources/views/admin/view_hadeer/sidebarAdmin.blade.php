@@ -39,7 +39,7 @@
             <!-- Heading -->
             <!-- Nav Item - Master Project -->
             <li class="nav-item link">
-                <a class="nav-link {{ ($elementActive == 'masterproject') ? 'active' : ''}}" href="/masterbarang">
+                <a class="nav-link {{ ($elementActive == 'masterproject') ? 'active' : ''}}" href="/masteritem">
                 <i class="fas fa-fw fa-solid fa-box"></i>
                     <span>Master Barang</span>
                 </a>

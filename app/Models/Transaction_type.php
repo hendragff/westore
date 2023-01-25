@@ -10,4 +10,6 @@ class transaction_type extends Model
     use HasFactory;
     protected $fillable = [];
     protected $table = '';
+
+    
 }

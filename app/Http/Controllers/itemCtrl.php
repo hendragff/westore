@@ -99,9 +99,9 @@ class itemCtrl extends Controller
      */
     public function edit($id)
     {
+        $category = Category::all();
         $data = Items::find($id);
-        return view('admin.view_hadeer.edititem',compact('data'));
-
+        return view('admin.view_hadeer.edititem',compact('data','category'));
     }
 
     /**
@@ -113,7 +113,30 @@ class itemCtrl extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $message = [
+            'required' => ':attribute harus diisi dulu',
+            'min' => ':attribute minimal :min karakter',
+            'max' => ':attibute maksimal :max karakter',
+            'numeric' => ':attribute harus berupa angka',
+          
+        ] ;
+
+        $this->validate($request,[
+            'name' => 'required|min:3',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'category_id' => 'required|numeric',
+    
+
+      ],$message);
+
+      $item = items::find($id);
+      $item->category_id = $request->category_id;
+      $item->name = $request->name;
+      $item->stock = $request->stock;
+      $item->price = $request->price;
+      $item->save();
+      return redirect('/masteritem');
     }
 
     /**

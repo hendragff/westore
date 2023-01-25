@@ -1,8 +1,9 @@
-@include('admin/head')
-@section('SB ADMIN' , 'Items Page')
-@section('title' , 'Items')
-@section('content-title', 'Items')
+@extends('admin.app')
+@section('SB ADMIN' , 'Pegawai')
+@section('title' , 'Master Barang')
+@section('content-title', 'Master Barang')
 @section('main')
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,13 +12,11 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         
-        @include('admin/view_hadeer/sidebarAdmin')
         <!-- Content Wrapper -->
         <div id="content-wrapper" class=" flex-column">
         
             <!-- Main Content -->
             <div id="content">
-            @include('admin/topbar')
             </div>
             @if (count($errors)>0)
             <div class="alert alert-danger">
@@ -150,20 +149,5 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src={{ asset('template/vendor/jquery/jquery.min.js') }}></script>
-    <script src={{ asset('template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src={{ asset('template/vendor/jquery-easing/jquery.easing.min.js') }}></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src={{ asset('template/js/sb-admin-2.min.js') }}></script>
-    <Style>
-        html{
-            scroll-behavior: smooth;
-        }
-    </Style>
-</body>
-
-</html>
+ 
+@endsection

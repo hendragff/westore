@@ -12,7 +12,7 @@
     <div id="wrapper">
         @include('admin/view_hadeer/sidebarAdmin')
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class=" flex-column">
         
             <!-- Main Content -->
             <div id="content">
@@ -27,41 +27,42 @@
             </div>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Item') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    <form method="POST" enctype="multipart/form-data" action="{{route('masteritem.update' , ['masteritem' => $data->id] )}}">
+                        @csrf
+                        {{method_field('PUT')}}
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label for="inputGroupSelect01" class="input-group-text"></label>
+                            </div>
+                            <select name="category_id" id="inputGroupSelect01" class="custom-select">
+                                <option selected>-</option>                    
+                                @foreach ($category as $ctg)
+                                <option value="{{$ctg->id}}">{{$ctg->name}}</option>
+                                @endforeach                   
+                            </select>
                         </div>
-                    @endif
-                    <table class="table table-responsive table-striped">
-                        <thead>
-                            <td>#</td>
-                            <td>Kategori</td>
-                            <td>Item</td>
-                            <td>Stock</td>
-                            <td>Price</td>
-                            <td>Action</td>
-                        </thead>
-                        <tr>
-                            <?php $i = 1 ?>
-                           
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <a href="masteritem/edit" class="btn btn-sm btn-warning text-light">Edit</a>
-                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
-                            </td>
-                            </tr>
-                       
-                    </table>
-                    <!-- {{ __('You are logged in!') }} -->
+                        <div class="form-group">
+                            <label for="name">Item</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{$data->name}}" >
+                        </div>
+                        <div class="form-group">
+                            <label for="stock">Stock</label>
+                            <input type="number" class="form-control" id="stock" name="stock" value="{{$data->stock}}" >
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" class="form-control" id="price" name="price" value="{{$data->price}}" >
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success" value="simpan">
+                            <a href="{{route('masterbarang.index')}}" class="btn btn-danger">Batal</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -69,14 +70,14 @@
 </div>
             <!-- End of Main Content -->
             
-            @include('admin/footer')
+        
 
         </div>
         <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
-
+    
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>

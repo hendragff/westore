@@ -45,6 +45,22 @@
             </div>
         </div>
     </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="/masterpegawai">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Master Karyawan</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/masteritem">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Master Item</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/mastercategory">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Master Category</span></a>
+    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">

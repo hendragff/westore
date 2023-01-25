@@ -1,37 +1,19 @@
-@extends('admin.view_hadeer.mainAdmin')
-@section('SB ADMIN' , 'Kategori Page')
-@section('title' , 'Kategori')
-@section('content-title', 'Kategori')
+@extends('admin.app')
+@section('SB ADMIN' , 'Pegawai')
+@section('title' , 'Master Categroy')
+@section('content-title', 'Master Category')
 @section('main')
 
-<!DOCTYPE html>
-<html lang="en">
-<body id="">
-    
-    <!-- Page Wrapper -->
     <div id="wrapper">
-        
-        @include('admin/view_hadeer/sidebarAdmin')
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class=" flex-column">
-        
+        <div id="content-wrapper" class="flex-column">        
             <!-- Main Content -->
-            <div id="content">
-            @include('admin/topbar')
-            </div>
-            @if (count($errors)>0)
-            <div class="alert alert-danger">
-                <ul>@foreach ($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
             <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Kategori') }}</div>
+                <div class="card-header">{{ __('Master Karyawan') }}</div>
+
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -41,12 +23,14 @@
                     <table class="table table-responsive-striped">
                         <thead>
                             <td>#</td>
-                            <td>Nama</td>
+                            <td>id</td>
+                            <td>Category Name</td>
+                            <td>Action</td>
                         </thead>
                         <tr>
-                            <?php $i = 1 ?>
                             <td>1</td>
-                            <td>sdffafasdf</td>
+                            <td>1</td>
+                            <td>Snack</td>
                             <td>
                                 <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
                                 <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
@@ -59,27 +43,29 @@
         </div>
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">{{__('Add Kategori')}}</div>
+                <div class="card-header">{{__('Add Karyawan')}}</div>
                 <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{session('status')}}
                     </div>
                     @endif
-                    <form method="POST" enctype="multipart/form-data" action="">
-                        @csrf
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label for="inputGroupSelect01" class="input-group-text"></label>
-                            </div>
-                            <select name="category_id" id="inputGroupSelect01" class="custom-select">
-                                <option selected>-</option>                    
-                                <option value=""></option>
-                            </select>
+                    <form action="">
+                        <div class="form-group">
+                            <label for="">Nama</label>
+                            <input type="text" class="form-control" name="nama" id="">
                         </div>
                         <div class="form-group">
-                            <label for="">Name</label>
-                            <input type="text" class="form-control" name="name" id="">
+                            <label for="">Alamat</label>
+                            <input type="text" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
+                        </div>
+                        <div class="form-group">
+                            <label for="">No. Telepon</label>
+                            <input type="number" class="form-control" name="" id="" style="margin-bottom: 5px;">
                         </div>
                         <input type="submit" class="btn btn-sm text-light btn-success" value="Submit">
                         <input type="submit" class="btn btn-sm text-light btn-danger" value="Batal">
@@ -89,6 +75,42 @@
         </div>
     </div>
 </div>
+            <!-- End of Main Content -->
+            
 
+        </div>
+        <!-- End of Content Wrapper -->
+        
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ingin Keluar?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Apakah Anda ingin keluar dari aplikasi? Klik Logout jika ingin
+                </div>
+                <div class="modal-footer">
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-primary" value="Logout"></input>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection

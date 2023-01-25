@@ -1,28 +1,19 @@
-@include('admin/head')
-@section('SB ADMIN' , 'Karyawan Page')
-@section('title' , 'Karyawan')
-@section('content-title', 'Karyawan')
+@extends('admin.app')
+@section('SB ADMIN' , 'Pegawai')
+@section('title' , 'Master Categroy')
+@section('content-title', 'Master Category')
 @section('main')
 
-<!DOCTYPE html>
-<html lang="en">
-<body id="page-top">
-    
-    <!-- Page Wrapper -->
     <div id="wrapper">
-        @include('admin/view_hadeer/sidebarAdmin')
+    
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
         
             <!-- Main Content -->
             <div id="content">
-            @include('admin/topbar')
+      
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Admin @yield('content-title') Page</h1>
-                    @yield('content')
-                </div>
+            
                 <!-- /.container-fluid -->
             </div>
             <div class="container">
@@ -109,8 +100,7 @@
 </div>
             <!-- End of Main Content -->
             
-            @include('admin/footer')
-
+       
         </div>
         <!-- End of Content Wrapper -->
 
@@ -146,20 +136,4 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src={{ asset('template/vendor/jquery/jquery.min.js') }}></script>
-    <script src={{ asset('template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src={{ asset('template/vendor/jquery-easing/jquery.easing.min.js') }}></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src={{ asset('template/js/sb-admin-2.min.js') }}></script>
-    <Style>
-        html{
-            scroll-behavior: smooth;
-        }
-    </Style>
-</body>
-
-</html>
+  @endsection

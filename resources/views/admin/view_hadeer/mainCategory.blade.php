@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Master Karyawan') }}</div>
+                <div class="card-header">{{ __('Master Category') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -23,19 +23,19 @@
                     <table class="table table-responsive-striped">
                         <thead>
                             <td>#</td>
-                            <td>id</td>
                             <td>Category Name</td>
                             <td>Action</td>
                         </thead>
+                        @foreach ($category as $ctg)
                         <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>Snack</td>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$ctg->name}}</td>
                             <td>
                                 <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
                                 <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
                             </td>
                             </tr>
+                            @endforeach
                     </table>
                     <!-- {{ __('You are logged in!') }} -->
                 </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">{{__('Add Karyawan')}}</div>
+                <div class="card-header">{{__('Add Category')}}</div>
                 <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -52,20 +52,8 @@
                     @endif
                     <form action="">
                         <div class="form-group">
-                            <label for="">Nama</label>
-                            <input type="text" class="form-control" name="nama" id="">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Alamat</label>
-                            <input type="text" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Email</label>
-                            <input type="email" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
-                        </div>
-                        <div class="form-group">
-                            <label for="">No. Telepon</label>
-                            <input type="number" class="form-control" name="" id="" style="margin-bottom: 5px;">
+                            <label for="">Category Name</label>
+                            <input type="text" class="form-control" name="name" id="">
                         </div>
                         <input type="submit" class="btn btn-sm text-light btn-success" value="Submit">
                         <input type="submit" class="btn btn-sm text-light btn-danger" value="Batal">

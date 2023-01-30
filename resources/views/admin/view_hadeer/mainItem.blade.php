@@ -56,8 +56,13 @@
                             <td>{{$item->stock}}</td>
                             <td>{{$item->price}}</td>
                             <td>
+                                
+                            <form action="{{route('masteritem.destroy',$item->id)}}" method="POST">
+                                @csrf
+                                @method('delete')    
                                 <a href="masteritem/{{$item->id}}/edit" class="btn btn-sm btn-warning text-light">Edit</a>
-                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
+                                <button type="submit" class="btn btn-sm btn-danger text-light">Hapus</button>
+                            </form>
                             </td>
                             </tr>
                             @endforeach

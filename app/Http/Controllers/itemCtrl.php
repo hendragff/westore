@@ -147,7 +147,9 @@ class itemCtrl extends Controller
      */
     public function destroy($id)
     {
-        //
+       $data = items::find($id)->delete();
+       return redirect('/masteritem')->with('succes','Data has been delete');
+
     }
 
     // public function createItem($id){

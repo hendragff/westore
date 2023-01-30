@@ -31,7 +31,7 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
@@ -44,26 +44,26 @@
                 <a class="collapse-item" href="buttons.html">Add Barang</a>
             </div>
         </div>
-    </li>
+    </li> --}}
     
     <li class="nav-item">
         <a class="nav-link" href="/masterpegawai">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-solid fa-user"></i>
             <span>Master Karyawan</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/masteritem">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-solid fa-box"></i>
             <span>Master Item</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/mastercategory">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-fw fa-solid fa-braille"></i>
             <span>Master Category</span></a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
@@ -79,7 +79,7 @@
                 <a class="collapse-item" href="utilities-other.html">Other</a>
             </div>
         </div>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
     <hr class="sidebar-divider">

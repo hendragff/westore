@@ -16,7 +16,7 @@ class items extends Model
     protected $fillable = ["id", "category_id", "name", "price", "stock"];
     protected $table = 'items';
     public function category(){
-        return $this-> belongsTo(categories::class, 'category_id');
+        return $this-> belongsTo(Category::class, 'category_id');
     }
     public function cart(){
         return $this->hasOne(carts::class, 'item_id');

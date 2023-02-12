@@ -9,9 +9,10 @@ use App\Models\item;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ["id", "name"];
+    protected $guarded = [];
     protected $table = 'categories';
     public function item(){
         return $this->hasMany(item::class, 'category_id');
     }
+    
 }

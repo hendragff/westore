@@ -31,8 +31,12 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$ctg->name}}</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
-                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
+                                <a href="mastercategory/{{$ctg->id}}/edit" class="btn btn-sm btn-warning text-light">Edit</a>
+                            <form action="{{route('mastercategory.destroy',$ctg->id)}}" method="POST" class="d-inline">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-danger text-light">Hapus</button>
+                            </form>
                             </td>
                             </tr>
                             @endforeach
@@ -50,10 +54,11 @@
                         {{session('status')}}
                     </div>
                     @endif
-                    <form action="">
+                    <form action="{{route('mastercategory.store')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
                             <label for="">Category Name</label>
-                            <input type="text" class="form-control" name="name" id="">
+                            <input type="text" class="form-control" name="name" id="" value="{{old('nama')}}">
                         </div>
                         <input type="submit" class="btn btn-sm text-light btn-success" value="Submit">
                         <input type="submit" class="btn btn-sm text-light btn-danger" value="Batal">

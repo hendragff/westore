@@ -1,9 +1,9 @@
 @extends('admin.app')
 @section('SB ADMIN' , 'Pegawai')
-@section('title' , 'Master Categroy')
-@section('content-title', 'Master Category')
+@section('title' , 'Master Pegawai')
+@section('content-title', '')
 @section('main')
-
+ 
     <div id="wrapper">
     
         <!-- Content Wrapper -->
@@ -17,8 +17,12 @@
                 <!-- /.container-fluid -->
             </div>
             <div class="container">
+                <a href="{{route('masterpegawai.create')}}" class="btn btn-primary">Create</a>
+                <br>
+                <br>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Master Karyawan') }}</div>
 
@@ -28,7 +32,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <table class="table table-responsive table-striped">
+                    <table class="table table-responsive-striped">
                         <thead>
                             <td>#</td>
                             <td>Nama</td>
@@ -37,65 +41,27 @@
                             <td>Nomor Telepon</td>
                             <td>Action</td>
                         </thead>
+                     
+                        @foreach($item as $data)
                         <tr>
-                            <td>1</td>
-                            <td>Ferdian</td>
-                            <td>Wonokromo</td>
-                            <td>ferdian@gmail.com</td>
-                            <td>300023940329</td>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$data->name}}</td>
+                            <td>{{$data->alamat}}</td>
+                            <td>{{$data->email}}</td>
+                            <td>{{$data->no_telp}}</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
-                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
+                                <a href="masterpegawai/{{$data->id}}" class="btn btn-info btn-circle btn-sm"> <i class="fas fa-info"></i></a>
+                                <a href="masterpegawai/{{$data->id}}/edit" class="btn btn-sm btn-warning btn-circle "><i class="fas fa-edit"></i></a>
+                                <a href="" class="btn btn-sm btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                             </td>
                             </tr>
-                            <tr>
-                            <td>2</td>
-                            <td>Achmad</td>
-                            <td>Kenjeran</td>
-                            <td>achmad@gmail.com</td>
-                            <td>598347599090</td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-warning text-light">Edit</a>
-                                <a href="" class="btn btn-sm btn-danger text-light">Hapus</a>
-                            </td>
-                        </tr>
+                        @endforeach
                     </table>
                     <!-- {{ __('You are logged in!') }} -->
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">{{__('Add Karyawan')}}</div>
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{session('status')}}
-                    </div>
-                    @endif
-                    <form action="">
-                        <div class="form-group">
-                            <label for="">Nama</label>
-                            <input type="text" class="form-control" name="nama" id="">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Alamat</label>
-                            <input type="text" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Email</label>
-                            <input type="email" class="form-control" name="Stock" id="" style="margin-bottom: 5px;">
-                        </div>
-                        <div class="form-group">
-                            <label for="">No. Telepon</label>
-                            <input type="number" class="form-control" name="" id="" style="margin-bottom: 5px;">
-                        </div>
-                        <input type="submit" class="btn btn-sm text-light btn-success" value="Submit">
-                        <input type="submit" class="btn btn-sm text-light btn-danger" value="Batal">
-                    </form>
-                </div>
-            </div>
-        </div>
+     
     </div>
 </div>
             <!-- End of Main Content -->

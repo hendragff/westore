@@ -77,7 +77,9 @@ class categoryCtrl extends Controller
      */
     public function edit($id)
     {
-        //
+       $data = Category::find($id);
+       $category = Category::all();
+       return view('admin.view_hadeer.editcategory',compact('category','data'));
     }
 
     /**
@@ -89,7 +91,24 @@ class categoryCtrl extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $message = [
+            'required' => ':attribute harus diisi dulu',
+            'min' => ':attribute minimal :min karakter',
+            'max' => ':attibute maksimal :max karakter',
+            'numeric' => ':attribute harus berupa angka',
+          
+        ] ;
+
+        $this->validate($request,[
+            'name' => 'required|min:3',
+    
+
+      ],$message);
+
+      $category = Category::find($id);
+      $category->name = $request->name;
+      $category->update();
+      return redirect('/mastercategory');
     }
 
     /**
@@ -100,6 +119,7 @@ class categoryCtrl extends Controller
      */
     public function destroy($id)
     {
-        //
+       $category = Category::find($id)->delete();
+       return redirect('/mastercategory')->with('succes','Delete succes');
     }
 }

@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class pengguna extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'email', 'password', 'jk', 'alamat', 'foto'];
+    protected $guarded = [];
     protected $table = 'pengguna';
 }

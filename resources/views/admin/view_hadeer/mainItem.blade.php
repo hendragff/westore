@@ -51,7 +51,7 @@
                             <?php $i = 1 ?>
                             @foreach ($data as $item)
                             <td>{{$i++}}</td>
-                            <td>{{$item->category_id}}</td>
+                            <td>{{$item->category->name}}</td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->stock}}</td>
                             <td>{{$item->price}}</td>

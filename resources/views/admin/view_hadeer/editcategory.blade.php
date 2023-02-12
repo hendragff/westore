@@ -10,17 +10,14 @@
     
     <!-- Page Wrapper -->
     <div id="wrapper">
-     
         <!-- Content Wrapper -->
         <div id="content-wrapper" class=" flex-column">
         
             <!-- Main Content -->
             <div id="content">
-          
                 <!-- Begin Page Content -->
                 <div class="container">
                     <!-- Page Heading -->
-                   
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -31,39 +28,16 @@
                 <div class="card-header">{{ __('Item') }}</div>
 
                 <div class="card-body">
-                    <form action="{{route('masteritem.update' , ['masteritem' => $item->id] )}}"  method="POST" >
+                    {{-- {{route('masteritem.update' , ['masteritem' => $data->id] )}} --}}
+                    <form method="POST" enctype="multipart/form-data" action="{{route('mastercategory.update',['mastercategory'=>$data->id])}}">
                         @csrf
-                        {{@method_field('put')}}
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <label for="inputGroupSelect01" class="input-group-text">Jenis Kontak</label>
-                            </div>
-                            <select name="category_id" id="inputGroupSelect01" class="custom-select">
-                                <option selected>-</option>                    
-                                @foreach ($category as $ctg) 
-                                @if ($ctg->id == $item->category_id )
-                                <option selected value="{{$ctg->id}}">{{$ctg->name}}</option>
-                                @else 
-                                <option value="{{$ctg->id}}">{{$ctg->name}}</option>
-                                @endif
-                                
-                                @endforeach                   
-                            </select>
+                        {{method_field('PUT')}}
+                        <div class="form-group">
+                            <label for="name">Category Name</label>
+                            <input type="text" class="form-control"  name="name" value="{{$data->name}}" >
                         </div>
                         <div class="form-group">
-                            <label for="name">Item</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{$item->name}}" >
-                        </div>
-                        <div class="form-group">
-                            <label for="stock">Stock</label>
-                            <input type="number" class="form-control" id="stock" name="stock" value="{{$item->stock}}" >
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="number" class="form-control" id="price" name="price" value="{{$item->price}}" >
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary" >Simpan</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                             <a href="{{route('masterbarang.index')}}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
@@ -111,4 +85,4 @@
         </div>
     </div>
 
-    @endsection
+@endsection

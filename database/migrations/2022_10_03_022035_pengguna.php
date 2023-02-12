@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('jk');
             $table->string('alamat');
+            $table->bigInteger('no_telp');
             $table->char('foto');
             $table->timestamps();
         });

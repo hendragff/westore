@@ -17,6 +17,7 @@ class itemCtrl extends Controller
     {
         $data = Items::all();
         $category = Category::all();
+
         return view('admin.view_hadeer.mainItem',compact('data','category'));
     }
 
@@ -100,8 +101,8 @@ class itemCtrl extends Controller
     public function edit($id)
     {
         $category = Category::all();
-        $data = Items::find($id);
-        return view('admin.view_hadeer.edititem',compact('data','category'));
+        $item = Items::find($id);
+        return view('admin.view_hadeer.edititem',compact('item','category'));
     }
 
     /**
@@ -135,7 +136,7 @@ class itemCtrl extends Controller
       $item->name = $request->name;
       $item->stock = $request->stock;
       $item->price = $request->price;
-      $item->save();
+      $item->update();
       return redirect('/masteritem');
     }
 

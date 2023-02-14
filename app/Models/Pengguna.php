@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class pengguna extends Model
 {
     use HasFactory;
-    protected $guarded = [];
-    protected $table = 'pengguna';
+    protected $guarded = []; 
+    protected $table = '';
 }

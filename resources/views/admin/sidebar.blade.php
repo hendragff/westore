@@ -61,6 +61,11 @@
             <i class="fas fa-fw fa-solid fa-braille"></i>
             <span>Master Category</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/mastertransaction">
+            <i class="fas fa-fw fa-solid fa-braille"></i>
+            <span>Master Transaction</span></a>
+    </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->
     {{-- <li class="nav-item">

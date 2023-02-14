@@ -16,10 +16,16 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->bigInteger('id_roles')->unsigned();
+            $table->foreign('id_roles')->references('id')->on('roles')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->string('email');
             $table->string('password');
-            $table->rememberToken();
+            $table->string('jk');
+            $table->string('alamat');
+            $table->bigInteger('no_telp');
+            $table->char('foto');
             $table->timestamps();
         });
     }

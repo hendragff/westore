@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carts;
+use App\Models\items;
+use App\Models\transaction;
+use App\Models\transaction_detail;
 use Illuminate\Http\Request;
 
 class transactionCtrl extends Controller
@@ -13,7 +17,9 @@ class transactionCtrl extends Controller
      */
     public function index()
     {
-        //
+       $item = items::doesntHave('cart')->where('stock', '>' , 0)->get()->sortBy('name');
+       $carts = items::has('cart')->get()->sortByDesc('cart.create_at');
+       return view('admin.view_hadeer.mastertransaction',compact('item','carts'));
     }
 
     /**
@@ -34,7 +40,21 @@ class transactionCtrl extends Controller
      */
     public function store(Request $request)
     {
-        //
+    Carts::create($request->all());
+       return redirect()->back()->with('status','Item added to cart');
+       $message = [
+        'required' => ':attribute harus diisi dulu',
+        'min' => ':attribute minimal :min karakter',
+        'max' => ':attribute maksimal :max karakter',
+        'numeric' => ':attribute harus berupa angka'
+
+    ] ;
+
+    $this->validate($request,[
+    'total' => 'required|numeric',
+    'pay_total' => 'required|numeric',
+
+  ],$message);   
     }
 
     /**
@@ -45,7 +65,8 @@ class transactionCtrl extends Controller
      */
     public function show($id)
     {
-        //
+        $detail = transaction::find($id);
+        return view('admin.view_hadeer.showTransaction',compact('detail'));
     }
 
     /**
@@ -68,7 +89,8 @@ class transactionCtrl extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Carts::findorFail($id)->update($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -79,11 +101,28 @@ class transactionCtrl extends Controller
      */
     public function destroy($id)
     {
-        //
+       Carts::findorFail($id)->delete();
+       return redirect()->back();
     }
 
     public function history()
     {
-        return view('admin.view_hadeer.historytransaction');
+        $history = transaction::all()->sortByDesc('created_at');
+        return view('admin.view_hadeer.historytransaction',compact('history'));
     }
+
+    public function checkout(request $request){
+        $transaction = transaction::create($request->all());
+        foreach(Carts::all() as $item){
+            transaction_detail::create([
+                'transaction_id' => $transaction->id,
+                'item_id'        => $item->item_id,
+                'qtt'            => $item->qtt,
+                'subtotal'       => $item->item->price * $item->qtt
+            ]);
+        }
+        Carts::truncate();
+        return redirect(route('mastertransaction.show',$transaction->id));
+    }
+
 }

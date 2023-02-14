@@ -12,7 +12,7 @@ class Category extends Model
     protected $guarded = [];
     protected $table = 'categories';
     public function item(){
-        return $this->hasMany(item::class, 'category_id');
+        return $this->hasMany(items::class, 'category_id');
     }
     
 }

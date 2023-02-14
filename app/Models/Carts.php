@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\item;
+use App\Models\items;
 
 class Carts extends Model
 {
     use HasFactory;
     protected $fillable = ["id", "item_id", "qtt"];
-    protected $table = 'cart';
+
 
     public function item(){
-        return $this->belongsTo(item::class);
+        return $this->belongsTo(items::class);
     }
 }

@@ -25,7 +25,7 @@ class categoryCtrl extends Controller
      */
     public function create()
     {
-        return view('admin.view_hader.maincategory');
+        return view('admin.view_hadeer.mainCategory');
     }
 
     /**

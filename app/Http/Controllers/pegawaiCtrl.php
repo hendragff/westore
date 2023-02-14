@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\pengguna;
+use App\Models\User;
 use File;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class pegawaiCtrl extends Controller
      */
     public function index()
     {
-        $item = pengguna::all();
+        $item = User::all();
         return view('admin.view_hadeer.mainPegawai',compact('item'));
     }
 
@@ -25,7 +26,7 @@ class pegawaiCtrl extends Controller
      */
     public function create()
     {
-       $item = pengguna::all(); 
+       $item = User::all(); 
        return view('admin.view_hadeer.createPegawai',compact('item'));
     }
 
@@ -38,6 +39,50 @@ class pegawaiCtrl extends Controller
     public function store(Request $request)
     {
 
+        $message = [
+            'required' => ':attribute harus diisi dulu',
+            'min' => ':attribute minimal :min karakter',
+            'max' => ':attribute maksimal :max karakter',
+            'numeric' => ':attribute harus berupa angka',
+            'mimes' => 'file yang didukung yaitu jpg,jpeg,giv,svg,cr2',
+            'size' => 'file yang diupload maksimal :size',
+
+        ] ;
+
+        $this->validate($request,[
+        'name' => 'required|min:4|max:30',
+        'id_roles' => 'required|numeric',
+        'jk' => 'required',
+        'email' => 'required|',
+        'alamat' => 'required|min:5',
+        'password' => 'required|min:8',
+        'foto' => 'mimes:jpg,jpeg,giv,svg,cr2,png'
+
+      ],$message);     
+
+      //ambil informasi file yang diupload
+    $file = $request->file('foto');
+
+      //rename + ambil nama file
+    $nama_file = time()."_".$file->getClientOriginalName();
+
+      // proses upload
+    $tujuan_upload = './template/img';
+    $file->move($tujuan_upload,$nama_file);
+
+      // proses insert database
+      pengguna::create([
+        'name' => $request->name,
+        'id_roles' => $request->id_roles,
+        'jk' => $request->jk,
+        'email' => $request->email,
+        'no_telp' => $request->no_telp,
+        'alamat' => $request->alamat,
+        'password' => $request->password,
+        'foto' => $nama_file
+      ]);
+        return redirect('/masterpegawai');
+
     }
 
     /**
@@ -48,8 +93,8 @@ class pegawaiCtrl extends Controller
      */
     public function show($id)
     {
-      $data = pengguna::find($id);
-      $item = pengguna::all();
+      $data = User::find($id);
+      $item = User::all();
       return view('admin.view_hadeer.showPegawai',compact('data'));
     }
 
@@ -61,7 +106,7 @@ class pegawaiCtrl extends Controller
      */
     public function edit($id)
     {
-       $item = pengguna::find($id);
+       $item = User::find($id);
        return view('admin.view_hadeer.editPegawai',compact('item'));
     }
 
@@ -97,7 +142,7 @@ class pegawaiCtrl extends Controller
         if ($request->foto != ''){
             // dengan ganti foto
             // perintah hapus file foto yang lama
-            $pegawai = pengguna::find($id);
+            $pegawai = User::find($id);
             file::delete('/template/img'.$pegawai->foto);
   
             //ambil informasi file yang diupload
@@ -121,7 +166,7 @@ class pegawaiCtrl extends Controller
           return redirect('/masterpegawai');
           } else {
              // tanpa ganti foto
-             $pegawai = pengguna::find($id);
+             $pegawai = User::find($id);
              $pegawai->name = $request->name;
              $pegawai->id_roles = $request->id_roles;
              $pegawai->jk = $request->jk;

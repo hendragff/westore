@@ -40,8 +40,10 @@ Route::get('/dashboard', function () {
 // =======
 Route::resource('/masterbarang', BarangController::class);
 Route::resource('/masterpegawai', pegawaiCtrl::class);
+Route::resource('/mastertransaction', transactionCtrl::class);
 Route::resource('/masteritem', itemCtrl::class);
-Route::get('history', [transactionCtrl::class, 'history']);
+Route::get('/history', [transactionCtrl::class, 'history']);
+Route::post('/mastertransaction/checkout',[transactionCtrl::class, 'checkout'])->name('transaction.checkout');
 Route::resource('/register',registerCtrl::class);
 Route::resource('/mastercategory',categoryCtrl::class);
 // Route::get('',registerCtrl::class, 'index')->name('baru');

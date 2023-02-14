@@ -1,8 +1,8 @@
-@extends('admin.view_hadeer.mainAdmin')
-@section('SB ADMIN' , 'Transaction History Page')
-@section('title' , 'Transaction History')
-@section('content-title', 'Transaction History')
+@extends('admin.app')
+@section('SB ADMIN' , 'Transaction')
+@section('title' , 'Master Transaction')
 @section('main')
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -25,16 +25,18 @@
                             <td>Paytotal</td>
                             <td>Action</td>
                         </thead>
+                        @foreach($history as $hst)
                         <tr>
-                            <td>1</td>
-                            <td>22-02-2022</td>
-                            <td>Jaki</td>
-                            <td>150000</td>
-                            <td>150000</td>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{date('d - F - Y' , strtotime($hst->created_at))}}</td>
+                            <td>{{$hst->user->name}}</td>
+                            <td>{{number_format($hst->total)}}</td>
+                            <td>{{number_format($hst->pay_total)}}</td>
                             <td>
-                                <a href="/transaction/1" class="btn btn-primary">Details</a>
+                                <a href="/mastertransaction/{{$hst->id}}" class="btn btn-primary">Details</a>
                             </td>
                         </tr>
+                        @endforeach
                     </table>
                     <!-- {{ __('You are logged in!') }} -->
                 </div>

@@ -71,15 +71,15 @@ class pegawaiCtrl extends Controller
     $file->move($tujuan_upload,$nama_file);
 
       // proses insert database
-      pengguna::create([
+      User::create([
         'name' => $request->name,
         'id_roles' => $request->id_roles,
         'jk' => $request->jk,
         'email' => $request->email,
         'no_telp' => $request->no_telp,
         'alamat' => $request->alamat,
-        'password' => $request->password,
-        'foto' => $nama_file
+        'password' => bcrypt($request->password) ,
+        'foto' => $nama_file,
       ]);
         return redirect('/masterpegawai');
 
@@ -95,7 +95,7 @@ class pegawaiCtrl extends Controller
     {
       $data = User::find($id);
       $item = User::all();
-      return view('admin.view_hadeer.showPegawai',compact('data'));
+      return view('admin.view_hadeer.showPegawai',compact('data','item'));
     }
 
     /**

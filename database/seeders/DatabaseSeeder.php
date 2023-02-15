@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+
        User::create([
             'name' =>'momo',
             'id_roles' => 1,
@@ -32,6 +33,7 @@ class DatabaseSeeder extends Seeder
             'foto' => 'asd' ,
             'password' => bcrypt('hiraimomo'),
         ]);
+        
 
     }
 }

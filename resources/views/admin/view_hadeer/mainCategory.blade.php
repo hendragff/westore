@@ -1,16 +1,52 @@
 @extends('admin.app')
 @section('SB ADMIN' , 'Pegawai')
 @section('title' , 'Master Categroy')
-@section('content-title', 'Master Category')
+@section('content-title', '')
 @section('main')
 
     <div id="wrapper">
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="flex-column">        
             <!-- Main Content -->
+         
             <div class="container">
+                
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
+            <!-- Button trigger modal -->
+<!-- Button trigger modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Create
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form action="{{route('mastercategory.store')}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label for="">Category Name</label>
+                <input type="text" class="form-control" name="name" id="" value="{{old('nama')}}">
+            </div>
+    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
             <div class="card">
                 <div class="card-header">{{ __('Master Category') }}</div>
 
@@ -45,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
             <div class="card">
                 <div class="card-header">{{__('Add Category')}}</div>
                 <div class="card-body">
@@ -65,7 +101,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
             <!-- End of Main Content -->

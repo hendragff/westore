@@ -1,6 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+
+use App\Models\roles;
+use App\Models\supplier;
 use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,6 +25,18 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+
+        roles::create([
+            'id' => 1,
+            'roles' => 'admin'
+        ]);
+
+        supplier::create([
+            'name' => 'cahyono',
+            'no_telp' => '0823141231',
+            'perusahaan' => 'Pt. Nabati',
+            'alamat_perusahaan' => 'surabaya',
+        ]);
 
        User::create([
             'name' =>'momo',

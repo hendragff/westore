@@ -10,7 +10,7 @@ use App\Models\transaction_detail;
 class transaction extends Model
 {
     use HasFactory;
-    protected $fillable = ["id", "user_id", "total", "pay_total"];
+    protected $fillable = ["id", "user_id", "total", "pay_total","waktu"];
     protected $table = 'transaction';
 
     public function user(){

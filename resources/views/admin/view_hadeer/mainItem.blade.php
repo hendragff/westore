@@ -1,7 +1,6 @@
 @extends('admin.app')
 @section('SB ADMIN' , 'Pegawai')
 @section('title' , 'Master Barang')
-@section('content-title', 'Master Barang')
 @section('main')
 
 
@@ -31,6 +30,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                
                 <div class="card-header">{{ __('Item') }}</div>
                 <div class="card-body">
                     @if (session('status'))
@@ -68,8 +68,14 @@
                             @endforeach
                     </table>
                     <!-- {{ __('You are logged in!') }} -->
+                    <div class=" row justify-content-center">
+                        {{ $data->links() }}
+                     </div>
                 </div>
+               
             </div>
+            <br>
+            <a href="/exportItem" class="btn btn-primary col-md-1.5 ">Export</a>
         </div>
         <div class="col-md-4">
             <div class="card">

@@ -1,7 +1,6 @@
-@extends('admin.view_hadeer.mainAdmin')
-@section('SB ADMIN' , 'Dashboard Page')
+@extends('admin.app')
+@section('SB ADMIN' , 'Dashboard')
 @section('title' , 'Dashboard')
-@section('content-title', 'Dashboard')
 @section('main')
 
 @endsection

@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\items;
 use Illuminate\Http\Request;
 
+
 class itemCtrl extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class itemCtrl extends Controller
      */
     public function index()
     {
-        $data = Items::all();
+        $data = Items::paginate(7);
         $category = Category::all();
 
         return view('admin.view_hadeer.mainItem',compact('data','category'));

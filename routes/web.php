@@ -3,11 +3,15 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\itemCtrl;
 use App\Http\Controllers\categoryCtrl;
+use App\Http\Controllers\laporanTransacController;
 use App\Http\Controllers\transactionCtrl;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginCtrl;
 use App\Http\Controllers\pegawaiCtrl;
 use App\Http\Controllers\registerCtrl;
+use App\Http\Controllers\stockController;
+use App\Http\Controllers\supplierController;
+
 // use App\Http\Controllers\regControl;
 
 /*
@@ -21,9 +25,6 @@ use App\Http\Controllers\registerCtrl;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.view_hadeer.dashboard');
-});
 
 Route::get('/main', function () {
     return view('main');
@@ -40,14 +41,23 @@ Route::get('/dashboard', function () {
 // =======
 
 Route::middleware('auth')->group(function (){
+    
+    Route::get('/', function () {
+        return view('admin.view_hadeer.dashboard');
+    });
     Route::resource('/masterbarang', BarangController::class);
+    Route::resource('/laporantransaksi', laporanTransacController::class);
+    Route::get('/exportItem', [stockController::class, 'export'])->name('export.item');
+    Route::get('/exportTransac/{time1}/{time2}/{user}', [laporanTransacController::class, 'transac'])->name('export.transac');
     Route::resource('/masterpegawai', pegawaiCtrl::class);
     Route::resource('/mastertransaction', transactionCtrl::class);
     Route::resource('/masteritem', itemCtrl::class);
-    Route::get('/history', [transactionCtrl::class, 'history']);
+    Route::get('/laporan/{time1}/{time2}/{user}', [transactionCtrl::class, 'history']);
+    Route::get('/history', [transactionCtrl::class, 'laporan']);
     Route::post('/mastertransaction/checkout',[transactionCtrl::class, 'checkout'])->name('transaction.checkout');
     Route::resource('/register',registerCtrl::class);
     Route::resource('/mastercategory',categoryCtrl::class);    
+    Route::resource('/supplier',supplierController::class);    
     Route::post('/logout', [loginCtrl::class, 'logout']);    
 });
 

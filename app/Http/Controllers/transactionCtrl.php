@@ -105,14 +105,20 @@ class transactionCtrl extends Controller
        return redirect()->back();
     }
 
-    public function history()
+    public function laporan(){
+        return view('admin.view_hadeer.historytransaction');
+    }
+
+    public function history($time1,$time2,$user)
     {
-        $history = transaction::all()->sortByDesc('created_at');
-        return view('admin.view_hadeer.historytransaction',compact('history'));
+        $history = transaction::whereBetween('waktu' , [date('d-M-Y', strtotime($time1)), $time2])->where('user_id', $user)->get();
+        return view('admin.view_hadeer.showtransac',compact('history','time1','time2','user'));
     }
 
     public function checkout(request $request){
-        $transaction = transaction::create($request->all());
+        $data = $request->all();
+        $data['waktu'] = now();
+        $transaction = transaction::create($data);
         foreach(Carts::all() as $item){
             transaction_detail::create([
                 'transaction_id' => $transaction->id,

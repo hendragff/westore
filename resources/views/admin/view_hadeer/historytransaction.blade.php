@@ -4,44 +4,75 @@
 @section('main')
 
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Master Transaction') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <table class="table table-striped table-responsive">
-                        <thead>
-                            <td>#</td>
-                            <td>Date</td>
-                            <td>Served By</td>
-                            <td>Grand Total</td>
-                            <td>Paytotal</td>
-                            <td>Action</td>
-                        </thead>
-                        @foreach($history as $hst)
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{date('d - F - Y' , strtotime($hst->created_at))}}</td>
-                            <td>{{$hst->user->name}}</td>
-                            <td>{{number_format($hst->total)}}</td>
-                            <td>{{number_format($hst->pay_total)}}</td>
-                            <td>
-                                <a href="/mastertransaction/{{$hst->id}}" class="btn btn-primary">Details</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </table>
-                    <!-- {{ __('You are logged in!') }} -->
-                </div>
+<div class="row">
+<div class="col-md-12">
+    <div class="card">
+    <div class="card-body">
+    <h4 class="ms-1">Pengeluaran</h4>
+        <div class="row">
+            <div class="col">
+                <label for="time1" class="form-label">
+                    <h6>Dari Tanggal</h6>
+                </label>
+                <input type="date" name="date"
+                    class="form-control @error('date') is-invalid @enderror" id="time1" onchange="checktime2()">
+                @error('date')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="col">
+                <label for="time2" class="form-label">
+                    <h6>Sampai Tanggal</h6>
+                </label>
+                <input type="date" name="date"
+                    class="form-control @error('date') is-invalid @enderror" id="time2" onchange="checktime1()">
+                @error('date')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
         </div>
-    </div>
+    <button class="btn btn-primary mt-3 ms-1" onclick="showp()" id="btnlp" disabled>Laporan Pengeluaran</button>
 </div>
+</div>
+</div>
+</div>
+<br>
+<div class="card">
+    <div class="card-body" id="show">
+        <div class="text-center">
+            <h5>Silahkan pilih data</h5>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function checktime2() {
+    time2 = $('#time2').val();
+    if (time2 != "") {
+        $('#btnlp').prop("disabled", false);
+    }
+}
+
+function checktime1() {
+    time1 = $('#time1').val();
+    if (time1 != "") {
+        $('#btnlp').prop("disabled", false);
+    }
+}
+
+function showp() {
+        user = {{ auth()->user()->id }};
+        time1 = $('#time1').val();
+        time2 = $('#time2').val();
+        // console.log(time1);
+        $.get('/laporan/' + time1 + '/' + time2 + '/' + user, function(data) {
+            $('#show').html(data);
+        })
+    }
+</script>
 @endsection

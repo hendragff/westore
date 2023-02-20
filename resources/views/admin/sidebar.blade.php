@@ -63,8 +63,18 @@
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/mastertransaction">
-            <i class="fas fa-fw fa-solid fa-braille"></i>
+            <i class="fas fa-bolt"></i>
             <span>Master Transaction</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/history">
+            <i class="fas fa-history"></i>
+            <span>History Transaction</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/supplier">
+            <i class="fas fa-hands-helping"></i>
+            <span>Master Supplier</span></a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->

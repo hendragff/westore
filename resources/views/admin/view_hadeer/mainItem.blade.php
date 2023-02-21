@@ -41,7 +41,7 @@
                     <table class="table table-responsive-striped">
                         <thead>
                             <td>#</td>
-                            <td>Kategori</td>
+                            <td>Category</td>
                             <td>Item</td>
                             <td>Stock</td>
                             <td>Price</td>
@@ -68,9 +68,9 @@
                             @endforeach
                     </table>
                     <!-- {{ __('You are logged in!') }} -->
-                    <div class=" row justify-content-center">
+                    {{-- <div class=" row justify-content-center"> --}}
                         {{ $data->links() }}
-                     </div>
+                     {{-- </div> --}}
                 </div>
                
             </div>

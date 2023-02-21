@@ -12,18 +12,21 @@
         <thead>
             <tr>
                 <th scope="col">NO</th>
+                <th scope="col">Transaction Id</th>
                 <th scope="col">Date</th>
                 <th scope="col">Served By</th>
                 <th scope="col">Grand Total</th>
                 <th scope="col">Paytotal</th>
-                {{-- <th scope="col">Option</th> --}}
             </tr>
         </thead>
         <tbody>
             @foreach ($history as $p)
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ date('d-M-Y', strtotime($p->waktu)) }}</td>
+                    @foreach ($p->detail as $d)
+                    <td>{{$d->id}}</td>
+                    @endforeach
+                    <td>{{ $p->created_at}}</td>
                     <td>{{$p->user->name}}</td>
                     <td>Rp.{{number_format($p->total)}}</td>
                     <td>Rp.{{number_format($p->pay_total)}}</td>

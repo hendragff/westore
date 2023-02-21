@@ -35,14 +35,18 @@
                             <td>
                                 <input type="hidden" name="item_id" value="{{$data->id}}">
                                 <input type="hidden" name="qtt" value="1"> 
-                                <button type="submit" class="btn btn-success">Add to Cart</button>
+                                <button type="submit" class="btn btn-success btn-sm">Add to Cart</button>
                             </td>
                             </form>
                         </tr>
                         @endforeach
                         @endif
                     </table>
+       
+                    {{ $item->links() }}
+                  
                 </div>
+            
             </div>
         </div>
         <div class="col-md-5">
@@ -112,9 +116,9 @@
                     </tr>
 
                     <tr>
-                        <td><input type="submit" class="btn btn-primary" value="Checkout"></td>
+                        <td><input type="submit" class="btn btn-primary btn-sm" value="Checkout"></td>
                       
-                        <td><a type="reset" class="btn btn-danger" value="" href="">Reset</a></td>
+                        <td><a type="reset" class="btn btn-danger btn-sm" value="" href="{{route('transaction.reset')}}">Reset</a></td>
                     </tr>
                     </form>
                     </table>

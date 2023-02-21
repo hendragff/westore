@@ -5,7 +5,7 @@
 
 
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{_('Supplier')}}</div>    
                     <div class="card-body">
@@ -39,28 +39,31 @@
         
             <div class="col-md-4">
                 <div class="card">
+                <form action="{{route('supplier.store')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="card-header">{{_('Add Supplier')}}</div>
                     <div class="card-body">
                     <div class="form-group">
                         <label for="">Name</label>
-                        <input type="text" class="form-control" name="name" id="">
+                        <input type="text" class="form-control" name="name" id="" value="{{old('name')}}">
                     </div>
                     <div class="form-group">
                         <label for="">Call Number</label>
-                        <input type="number" class="form-control" name="no_telp" id="">
+                        <input type="number" class="form-control" name="no_telp" id="" value="{{old('no_telp')}}">
                     </div>
                     <div class="form-group">
                         <label for="">Company</label>
-                        <input type="text" class="form-control" name="perusahaan" id="">
+                        <input type="text" class="form-control" name="perusahaan" id="" value="{{old('perusahaan')}}">
                     </div>
                     <div class="form-group">
                         <label for="">Company Address</label>
-                        <input type="text" class="form-control" name="alamat_perusahaan" id="">
+                        <input type="text" class="form-control" name="alamat_perusahaan" id="" value="{{old('alamat_perusahaan')}}">
                     </div>
-                    <div class="form-group">
-                        <a href="" class="btn btn-primary">Add</a>
-                        <button class="btn btn-danger">Cancel</button>
-                    </div>
+                  
+                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button class="btn btn-danger" type="reset">Reset</button>
+          
+                </form>
                 </div>
                 </div>
             </div>

@@ -45,22 +45,18 @@
             </div>
         </div>
     </li> --}}
-    
+    @can('pegawai')
     <li class="nav-item">
-        <a class="nav-link" href="/masterpegawai">
-            <i class="fas fa-fw fa-solid fa-user"></i>
-            <span>Master Karyawan</span></a>
+        <a class="nav-link" href="/mastercategory">
+            <i class="fas fa-fw fa-solid fa-braille"></i>
+            <span>Master Category</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/masteritem">
             <i class="fas fa-fw fa-solid fa-box"></i>
             <span>Master Item</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/mastercategory">
-            <i class="fas fa-fw fa-solid fa-braille"></i>
-            <span>Master Category</span></a>
-    </li>
+
     <li class="nav-item">
         <a class="nav-link" href="/mastertransaction">
             <i class="fas fa-bolt"></i>
@@ -72,10 +68,43 @@
             <span>History Transaction</span></a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="/itemReturn">
+            <i class="fas fa-exchange-alt"></i>
+            <span>Item Return</span></a>
+    </li>
+    @endcan
+    
+   
+
+
+    @can('admin')
+    <li class="nav-item">
+        <a class="nav-link" href="/masterpegawai">
+            <i class="fas fa-fw fa-solid fa-user"></i>
+            <span>Master Karyawan</span></a>
+    </li>
+    {{-- <li class="nav-item">
+        <a class="nav-link" href="/masteritem">
+            <i class="fas fa-fw fa-solid fa-box"></i>
+            <span>Master Item</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/mastercategory">
+            <i class="fas fa-fw fa-solid fa-braille"></i>
+            <span>Master Category</span></a>
+    </li> --}}
+    {{-- <li class="nav-item">
+        <a class="nav-link" href="/history">
+            <i class="fas fa-history"></i>
+            <span>History Transaction</span></a>
+    </li> --}}
+    <li class="nav-item">
         <a class="nav-link" href="/supplier">
             <i class="fas fa-hands-helping"></i>
             <span>Master Supplier</span></a>
     </li>
+
+    @endcan
 
     <!-- Nav Item - Utilities Collapse Menu -->
     {{-- <li class="nav-item">

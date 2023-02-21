@@ -8,6 +8,7 @@ use App\Models\transaction;
 use App\Models\transaction_detail;
 use Illuminate\Http\Request;
 
+
 class transactionCtrl extends Controller
 {
     /**
@@ -18,6 +19,7 @@ class transactionCtrl extends Controller
     public function index()
     {
        $item = items::doesntHave('cart')->where('stock', '>' , 0)->get()->sortBy('name');
+       $item = items::paginate(7);
        $carts = items::has('cart')->get()->sortByDesc('cart.create_at');
        return view('admin.view_hadeer.mastertransaction',compact('item','carts'));
     }
@@ -129,6 +131,12 @@ class transactionCtrl extends Controller
         }
         Carts::truncate();
         return redirect(route('mastertransaction.show',$transaction->id));
+    }
+
+    
+    public function reset(){
+        Carts::whereNotNull('id')->delete();
+        return back();
     }
 
 }

@@ -31,6 +31,11 @@ class DatabaseSeeder extends Seeder
             'roles' => 'admin'
         ]);
 
+        roles::create([
+            'id' => 2,
+            'roles' => 'pegawai'
+        ]);
+
         supplier::create([
             'name' => 'cahyono',
             'no_telp' => '0823141231',
@@ -47,6 +52,16 @@ class DatabaseSeeder extends Seeder
             'email' => 'momo@gmail.com',   
             'foto' => 'asd' ,
             'password' => bcrypt('hiraimomo'),
+        ]);
+       User::create([
+            'name' =>'Hilzam',
+            'id_roles' => 2,
+            'jk' => 'Laki - Laki',
+            'no_telp' => '08213143123',
+            'alamat' => 'Gunung Sari Indah',
+            'email' => 'hilzam@gmail.com',   
+            'foto' => 'asd' ,
+            'password' => bcrypt('12345678'),
         ]);
         
 

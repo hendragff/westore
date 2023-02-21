@@ -25,7 +25,7 @@ class supplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.view_hadeer.supplier');
     }
 
     /**
@@ -36,7 +36,35 @@ class supplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $message = [
+            'required' => ':attribute harus diisi dulu',
+            'min' => ':attribute minimal :min karakter',
+            'max' => ':attribute maksimal :max karakter',
+            'numeric' => ':attribute harus berupa angka',
+            'mimes' => 'file yang didukung yaitu jpg,jpeg,giv,svg,cr2',
+            'size' => 'file yang diupload maksimal :size',
+
+        ] ;
+
+        $this->validate($request,[
+        'name' => 'required',
+        'no_telp' => 'required',
+        'perusahaan' => 'required',
+        'alamat_perusahaan' => 'required'
+
+      ],$message);     
+
+      // proses insert database
+      supplier::create([
+        'name' => $request->name,
+        'no_telp' => $request->no_telp,
+        'perusahaan' => $request->perusahaan,
+        'alamat_perusahaan' => $request->alamat_perusahaan,
+        // 'alamat' => $request->alamat,
+        // 'about' => $request->about,
+        // 'foto' => $nama_file
+      ]);
+        return redirect('/supplier');
     }
 
     /**

@@ -19,4 +19,7 @@ class transaction extends Model
     public function detail(){
         return $this->hasMany(transaction_detail::class ,'transaction_id');
     }
+    public function item(){
+        return $this->belongsTo(items::class,'item_id');
+    }
 }

@@ -17,16 +17,19 @@
             <!-- Main Content -->
             <div id="content">
             </div>
-            @if (count($errors)>0)
-            <div class="alert alert-danger">
-                <ul>@foreach ($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                  
-                </ul>
-            </div>
-        @endif
+
             <div class="container">
+                @if (count($errors)>0)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>@foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>      
+                    </ul>
+                </div>
+            @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -38,7 +41,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <table class="table table-responsive-striped">
+                    <table class="table table-responsive-striped"  id="dataTable">
                         <thead>
                             <td>#</td>
                             <td>Category</td>
@@ -57,25 +60,26 @@
                             <td>{{$item->price}}</td>
                             <td>
                                 
-                            <form action="{{route('masteritem.destroy',$item->id)}}" method="POST">
+                            <form action="{{route('masteritem.destroy',$item->id)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('delete')    
                                 <a href="masteritem/{{$item->id}}/edit" class="btn btn-sm btn-warning text-light">Edit</a>
                                 <button type="submit" class="btn btn-sm btn-danger text-light">Hapus</button>
                             </form>
+                            
                             </td>
                             </tr>
                             @endforeach
                     </table>
                     <!-- {{ __('You are logged in!') }} -->
                     {{-- <div class=" row justify-content-center"> --}}
-                        {{ $data->links() }}
+                        {{-- {{ $data->links() }} --}}
                      {{-- </div> --}}
                 </div>
                
             </div>
             <br>
-            <a href="/exportItem" class="btn btn-primary col-md-1.5 ">Export</a>
+            <a href="/exportItem" class="btn btn-success col-md-1.5 ">Export</a>
         </div>
         <div class="col-md-4">
             <div class="card">
@@ -86,7 +90,7 @@
                         {{session('status')}}
                     </div>
                     @endif
-                    <form method="POST" enctype="multipart/form-data" action="{{route('masteritem.store')}}">
+                    <form method="POST" enctype="multipart/form-data" action="{{route('masteritem.store')}}" class="d-inline">
                         @csrf
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -111,8 +115,7 @@
                             <label for="">Price</label>
                             <input type="text" class="form-control" name="price" id="" style="margin-bottom: 5px;">
                         </div>
-                        <input type="submit" class="btn btn-sm text-light btn-success" value="Submit">
-                        <input type="submit" class="btn btn-sm text-light btn-danger" value="Batal">
+                        <input type="submit" class="btn btn-sm text-light btn-primary" value="Submit">
                     </form>
                 </div>
             </div>

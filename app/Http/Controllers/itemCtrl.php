@@ -16,7 +16,7 @@ class itemCtrl extends Controller
      */
     public function index()
     {
-        $data = Items::paginate(7);
+        $data = Items::all();
         $category = Category::all();
 
         return view('admin.view_hadeer.mainItem',compact('data','category'));
@@ -158,5 +158,9 @@ class itemCtrl extends Controller
     //     $category = Category::find($id);
     //     return view('admin.view_hadeer.mainItem',compact('category'));
     // }
+    public function reset(){
+        items::whereNotNull('id')->delete();
+        return back();
+    }
 
 }

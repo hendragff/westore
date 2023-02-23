@@ -12,10 +12,22 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 </head>
-<a href="/returnExport" class="btn btn-success mb-2 mt-3 btn-sm"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></i>Export</a>
-<br>
-<div class="row">
-    <div class="col-md-7">
+<div class="container">
+    @if (count($errors)>0)
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul>@foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>      
+        </ul>
+    </div>
+@endif
+    <a href="/returnExport" class="btn btn-success mb-2 mt-3 btn-sm"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></i>Export</a>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
         <div class="card">
             <div class="card-header">List</div>
             <div class="card-body">
@@ -38,8 +50,11 @@
 <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal-{{$d->id}}">
     <i class="fas fa-edit"></i>
   </button>
-  
+                        <form action="{{route('itemReturn.destroy',$d->id)}}" method="POST" class="d-inline">
+                        @csrf
+                        @method('delete')
                             <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </form>
                         </td>
                     </tr>
                     @endforeach
@@ -87,10 +102,13 @@
                 <form action="{{route('itemReturn.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                 <div class="row justify-content-between">
-                    <div class="col-md-7">
+                    <div class="col-md-12">
                     <select class="livesearch form-control" name="item_id"></select>
+                </div>  
                 </div>
-                    <div class="col-md-5">
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="input-group input-group-sm mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="inputGroup-sizing-sm">Qty</span>
@@ -98,7 +116,6 @@
                             <input type="number" name="qtt" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
                           </div>
                     </div>
-     
                 </div>
                 <div class="row">
                     <div class="col-md-12">
@@ -112,6 +129,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script type="text/javascript">

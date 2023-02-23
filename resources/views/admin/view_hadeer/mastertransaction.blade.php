@@ -5,11 +5,30 @@
 
 
     <div class="row justify-content-center">
+        @if (count($errors)>0)
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>@foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+              <button type="button" class="btn-close" data-bs-dismiss="aler" aria-label="Close"></button>
+            </ul>
+        </div>
+    @endif  
+        @if (session()->has('succes'))
+        <div class="row">
+        <div class="col-5">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session('succes')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+        </div>
+        </div>
+        @endif
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">{{ __('Transaction') }}</div>
                 <div class="card-body">
-                    <table class="table table-responsive-striped">
+                    <table class="table table-responsive-striped" id="dataTable">
                         <thead>
                             <td>#</td>  
                             <td>Category</td>
@@ -42,8 +61,8 @@
                         @endforeach
                         @endif
                     </table>
-       
-                    {{ $item->links() }}
+{{--        
+                    {{ $data->links() }} --}}
                   
                 </div>
             
@@ -112,7 +131,9 @@
                     </tr>
                     <tr>
                         <td colspan="3">Payment :</td>
-                        <td colspan="2"><input class="form-control" type="number"  name="pay_total" value="" required ></td>
+                        <td colspan="2"><input class="form-control" type="number"  name="pay_total" value="" min="{{$carts->sum(function ($item){
+                            return $item->price * $item->cart->qtt;
+                        })}}" required ></td>
                     </tr>
 
                     <tr>

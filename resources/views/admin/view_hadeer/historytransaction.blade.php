@@ -3,7 +3,7 @@
 @section('title' , 'Sales Report')
 @section('main')
 
-
+<div class="container">
 <div class="row">
 <div class="col-md-12">
     <div class="card">
@@ -40,6 +40,7 @@
 </div>
 </div>
 </div>
+
 <br>
 <div class="card">
     <div class="card-body" id="show">
@@ -75,4 +76,5 @@ function showp() {
         })
     }
 </script>
+</div>
 @endsection

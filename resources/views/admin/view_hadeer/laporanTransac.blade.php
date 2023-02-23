@@ -1,4 +1,40 @@
-<table>
+
+<table class="table table-hover mt-4">
+    <thead>
+        <tr>
+            {{-- <th scope="col">NO</th> --}}
+            <th scope="col">Transaction Id</th>
+            <th scope="col">Item</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Price</th>
+            <th scope="col">Date</th>
+            <th scope="col">Served By</th>
+            <th scope="col">Grand Total</th>
+            <th scope="col">Paytotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($laporan as $p)
+            @foreach ($p->detail as $d)
+            <tr>
+                <td>{{$d->transaction_id}}</td>
+                <td>{{$d->item->name}}</td>
+                <td>{{$d->qtt}}</td>
+                <td>{{$d->item->price}}</td>
+                <td>{{ $p->created_at}}</td>
+                <td>{{$p->user->name}}</td>
+                <td>Rp.{{number_format($p->total)}}</td>
+                <td>Rp.{{number_format($p->pay_total)}}</td>
+            </tr>
+            @endforeach
+        @endforeach
+
+    </tbody>
+
+</table>
+
+
+{{-- <table>
     <thead>
         <tr>
             
@@ -59,7 +95,7 @@
             <td>Rp.{{number_format($laporan->sum(function($data){return $data->total; }))}}</td>
         </tr>
     </tbody>
-</table>
+</table> --}}
 
 
 

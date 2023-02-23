@@ -1,7 +1,6 @@
 @extends('admin.app')
 @section('SB ADMIN' , 'Pegawai')
-@section('title' , 'Master Categroy')
-@section('content-title', 'Master Category')
+@section('title' , 'Edit Categroy')
 @section('main')
 
 <!DOCTYPE html>
@@ -38,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{route('masterbarang.index')}}" class="btn btn-danger">Batal</a>
+                            <a href="{{route('masteritem.index')}}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>

@@ -18,9 +18,10 @@ class transactionCtrl extends Controller
      */
     public function index()
     {
+
        $item = items::doesntHave('cart')->where('stock', '>' , 0)->get()->sortBy('name');
-       $item = items::paginate(7);
-       $carts = items::has('cart')->get()->sortByDesc('cart.create_at');
+       $carts = items::has('cart')->get()->sortByDesc('cart.created_at');
+    //    $carts = items::paginate(7) ;
        return view('admin.view_hadeer.mastertransaction',compact('item','carts'));
     }
 
@@ -113,9 +114,10 @@ class transactionCtrl extends Controller
 
     public function history($time1,$time2,$user)
     {
-        $history = transaction::whereBetween('waktu' , [date('d-M-Y', strtotime($time1)), $time2])->where('user_id', $user)->get();
+        $history = transaction::whereBetween('waktu' , [date('d-M-Y', strtotime($time1)), $time2])->get();
         return view('admin.view_hadeer.showtransac',compact('history','time1','time2','user'));
     }
+
 
     public function checkout(request $request){
         $data = $request->all();

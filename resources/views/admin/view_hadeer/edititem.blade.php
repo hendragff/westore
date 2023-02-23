@@ -1,7 +1,6 @@
 @extends('admin.app')
 @section('SB ADMIN' , 'Pegawai')
-@section('title' , 'Master Categroy')
-@section('content-title', 'Master Category')
+@section('title' , 'Edit Item')
 @section('main')
 
 <!DOCTYPE html>
@@ -16,21 +15,31 @@
         
             <!-- Main Content -->
             <div id="content">
-          
-                <!-- Begin Page Content -->
-                <div class="container">
-                    <!-- Page Heading -->
-                   
-                </div>
-                <!-- /.container-fluid -->
             </div>
 <div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                @if (count($errors)>0)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>@foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>      
+                    </ul>
+                </div>
+            @endif
                 <div class="card-header">{{ __('Item') }}</div>
 
                 <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
                     <form action="{{route('masteritem.update' , ['masteritem' => $item->id] )}}"  method="POST" >
                         @csrf
                         {{@method_field('put')}}
@@ -64,7 +73,7 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary" >Simpan</button>
-                            <a href="{{route('masterbarang.index')}}" class="btn btn-danger">Batal</a>
+                            <a href="{{route('masteritem.index')}}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>

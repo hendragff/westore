@@ -22,11 +22,18 @@ class User extends Authenticatable
      protected $guarded = []; 
      protected $table = 'users';
 
+  
+
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
      */
+
+     public function role(){
+        return $this->belongsTo(roles::class,'roles');
+      }
+
     protected $hidden = [
         'password',
         'remember_token',

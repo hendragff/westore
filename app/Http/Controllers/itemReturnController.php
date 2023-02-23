@@ -144,6 +144,7 @@ class itemReturnController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = itemreturn::find($id)->delete();
+        return redirect()->back();
     }
 }

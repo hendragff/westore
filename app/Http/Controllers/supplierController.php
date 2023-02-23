@@ -109,6 +109,7 @@ class supplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = supplier::find($id)->delete();
+        return redirect()->back();
     }
 }

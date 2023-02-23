@@ -4,7 +4,21 @@
 @section('main')
 
 
-        <div class="row">
+
+
+    <div class="container">
+        @if (count($errors)>0)
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>@foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>      
+            </ul>
+        </div>
+    @endif
+        <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{_('Supplier')}}</div>    
@@ -27,8 +41,14 @@
                             <td>{{$item->alamat_perusahaan}}</td>
                             <td>
                                 <a href="https://wa.me/+62{{$item->no_telp}}" target="_blank" class="btn btn-success btn-sm"><i class="fab fa-whatsapp"></i></a>
+                                @can('admin')
                                 <a href=""  class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                                <form action="{{route('supplier.destroy',$item->id)}}" method="POST" class="d-inline">
+                                @csrf
+                                @method('delete')
                                 <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                @endcan
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -36,7 +56,7 @@
                     </div>
                 </div>
             </div>
-        
+        @can('admin')
             <div class="col-md-4">
                 <div class="card">
                 <form action="{{route('supplier.store')}}" method="POST" enctype="multipart/form-data">
@@ -67,8 +87,9 @@
                 </div>
                 </div>
             </div>
-
+            @endcan
         </div>
+    </div>
 
 
 @endsection

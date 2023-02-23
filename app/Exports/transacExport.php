@@ -21,7 +21,7 @@ class transacExport implements FromView,ShouldAutoSize
     public function view(): View
     {
        return view('admin.view_hadeer.laporanTransac',[
-        'laporan' => transaction::whereBetween('waktu' , [date('d-M-Y', strtotime($this->time1)), $this->time2])->where('user_id', $this->user)->get()
+        'laporan' => transaction::whereBetween('waktu' , [date('d-M-Y', strtotime($this->time1)), $this->time2])->get()
        ]);
     }
 }

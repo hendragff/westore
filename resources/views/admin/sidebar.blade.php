@@ -17,7 +17,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -26,9 +26,7 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
+
 
     <!-- Nav Item - Pages Collapse Menu -->
     {{-- <li class="nav-item">
@@ -46,6 +44,9 @@
         </div>
     </li> --}}
     @can('pegawai')
+    <div class="sidebar-heading">
+        Master
+    </div>
     <li class="nav-item">
         <a class="nav-link" href="/mastercategory">
             <i class="fas fa-fw fa-solid fa-braille"></i>
@@ -62,6 +63,9 @@
             <i class="fas fa-bolt"></i>
             <span>Master Transaction</span></a>
     </li>
+    <div class="sidebar-heading">
+        Utility
+    </div>
     <li class="nav-item">
         <a class="nav-link" href="/history">
             <i class="fas fa-history"></i>
@@ -72,12 +76,20 @@
             <i class="fas fa-exchange-alt"></i>
             <span>Item Return</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/supplier">
+            <i class="fas fa-hands-helping"></i>
+            <span>Supplier</span></a>
+    </li>
     @endcan
     
    
 
 
     @can('admin')
+    <div class="sidebar-heading">
+       Administration
+    </div>
     <li class="nav-item">
         <a class="nav-link" href="/masterpegawai">
             <i class="fas fa-fw fa-solid fa-user"></i>

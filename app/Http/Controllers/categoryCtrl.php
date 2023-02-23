@@ -14,7 +14,7 @@ class categoryCtrl extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $category = Category::paginate(6);
         return view('admin.view_hadeer.maincategory',compact('category'));
     }
 
@@ -77,9 +77,9 @@ class categoryCtrl extends Controller
      */
     public function edit($id)
     {
-       $data = Category::find($id);
-       $category = Category::all();
-       return view('admin.view_hadeer.editcategory',compact('category','data'));
+    //    $data = Category::find($id);
+    //    $category = Category::all();
+    //    return view('admin.view_hadeer.editcategory',compact('category','data'));
     }
 
     /**

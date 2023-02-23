@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\pengguna;
+use App\Models\roles;
 use App\Models\User;
 use File;
 use Illuminate\Http\Request;
@@ -186,7 +187,8 @@ class pegawaiCtrl extends Controller
      */
     public function destroy($id)
     {
-        //
+       $data = User::find($id)->delete();
+       return redirect()->back();
     }
 }
 

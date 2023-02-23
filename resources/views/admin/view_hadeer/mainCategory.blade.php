@@ -10,7 +10,17 @@
             <!-- Main Content -->
          
             <div class="container">
-                
+                @if (count($errors)>0)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>@foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>      
+                    </ul>
+                </div>
+            @endif
     <div class="row justify-content-center">
         <div class="col-md-12">
             <!-- Button trigger modal -->
@@ -19,13 +29,14 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
     Create
   </button>
-  
+  <br>
+  <br>  
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Create Category</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -67,7 +78,38 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$ctg->name}}</td>
                             <td>
-                                <a href="mastercategory/{{$ctg->id}}/edit" class="btn btn-sm btn-warning text-light">Edit</a>
+                                <!-- Button trigger modal -->
+<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#exampleModal-{{$ctg->id}}">
+   Edit
+  </button>
+  
+  <!-- Modal -->
+  
+  <div class="modal fade" id="exampleModal-{{$ctg->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" enctype="multipart/form-data" action="{{route('mastercategory.update',['mastercategory'=>$ctg->id])}}">
+                @csrf
+                {{method_field('put')}}
+            <label for="">Category Name</label>
+            <input type="text" class="form-control" name="name" id="" value="{{$ctg->name}}">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+          
+  </form>
+        </div>
+      </div>
+    </div>
+  </div>
                             <form action="{{route('mastercategory.destroy',$ctg->id)}}" method="POST" class="d-inline">
                                 @csrf
                                 @method('delete')
@@ -78,7 +120,9 @@
                             @endforeach
                     </table>
                     <!-- {{ __('You are logged in!') }} -->
+                    {{ $category->links() }}
                 </div>
+             
             </div>
         </div>
         {{-- <div class="col-md-4">

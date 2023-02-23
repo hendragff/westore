@@ -1,13 +1,12 @@
 @extends('admin.app')
 @section('SB ADMIN' , 'Pegawai')
 @section('title' , 'Create Pegawai')
-@section('content-title', 'Create Pegawai')
 @section('main')
 
 
     
-<div class="row">
-    <div class="col-lg-12">
+<div class="row justify-content-center">
+    <div class="col-lg-10">
         <div class="card shadow mb-4">
             <div class="card-body">
                 @if (count($errors)>0)
@@ -26,8 +25,13 @@
                         <input type="text" class="form-control" id="nama" name="name"  value="{{old('name')}}">
                     </div>
                     <div class="form-group">
-                        <label for="NISN">ID-Roles</label>
-                        <input type="text" class="form-control" id="NISN" name="id_roles"  value="{{old('id_roles')}}" >
+                    <label for="id_roles">Role</label>
+                    <select name="id_roles" id="id_roles" class="custom-select">   
+                        <option selected>-</option>                    
+                        @foreach ($item as $ctg)
+                        <option value="{{$ctg->id_roles}}">{{$ctg->id_roles}}</option>
+                        @endforeach                   
+                    </select>
                     </div>
                     <div class="form-group">
                         <label for="no_telp">No. Telepon</label>

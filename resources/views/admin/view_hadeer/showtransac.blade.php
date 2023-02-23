@@ -13,6 +13,7 @@
             <tr>
                 <th scope="col">NO</th>
                 <th scope="col">Transaction Id</th>
+                <th scope="col">Item</th>
                 <th scope="col">Date</th>
                 <th scope="col">Served By</th>
                 <th scope="col">Grand Total</th>
@@ -21,16 +22,17 @@
         </thead>
         <tbody>
             @foreach ($history as $p)
+                @foreach ($p->detail as $d)
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    @foreach ($p->detail as $d)
-                    <td>{{$d->id}}</td>
-                    @endforeach
+                    <td>{{$d->transaction_id}}</td>
+                    <td>{{$d->item->name}}</td>
                     <td>{{ $p->created_at}}</td>
                     <td>{{$p->user->name}}</td>
                     <td>Rp.{{number_format($p->total)}}</td>
                     <td>Rp.{{number_format($p->pay_total)}}</td>
                 </tr>
+                @endforeach
             @endforeach
 
         </tbody>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\itemCtrl;
 use App\Http\Controllers\categoryCtrl;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\itemReturnController;
 use App\Http\Controllers\laporanTransacController;
 use App\Http\Controllers\transactionCtrl;
@@ -27,15 +28,6 @@ use App\Http\Controllers\supplierController;
 */
 
 
-Route::get('/main', function () {
-    return view('main');
-});
-Route::get('/masterpegawai', function () {
-    return view('admin.masterpegawai');
-});
-Route::get('/dashboard', function () {
-    return view('admin.view_hadeer.dashboard');
-});
 
 // <<<<<<< HEAD
 // login and register  routes
@@ -43,10 +35,10 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function (){
     
-    Route::get('/', function () {
-        return view('admin.view_hadeer.dashboard');
-    });
-    // Route::resource('/masterbarang', BarangController::class);
+
+    Route::resource('/supplier',supplierController::class); 
+    Route::resource('/dashboard',DashboardController::class);
+
     // Route::get('/exportItem', [stockController::class, 'export'])->name('export.item');
     // Route::get('/exportTransac/{time1}/{time2}/{user}', [laporanTransacController::class, 'transac'])->name('export.transac');
     // Route::resource('/mastertransaction', transactionCtrl::class);
@@ -73,7 +65,9 @@ Route::middleware('guest')->group(function(){
 
 Route::middleware('pegawai')->group(function()
 {
+    // Route::resource('/masterbarang', BarangController::class);
     Route::get('/reset',[transactionCtrl::class, 'reset'])->name('transaction.reset');
+    Route::get('/resetItem',[itemCtrl::class,'reset'])->name('item.reset');
     Route::resource('/laporantransaksi', laporanTransacController::class);
     Route::resource('/itemReturn', itemReturnController::class);
     Route::get('/returnExport',[itemReturnController::class,'exportReturn'])->name('export.return');
@@ -96,6 +90,6 @@ Route::middleware('pegawai')->group(function()
 Route::middleware('admin')->group(function(){
     Route::resource('/register',registerCtrl::class); 
     Route::resource('/masterpegawai', pegawaiCtrl::class);
-    Route::resource('/supplier',supplierController::class); 
+
 });
 

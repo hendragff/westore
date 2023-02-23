@@ -17,6 +17,17 @@
                 <!-- /.container-fluid -->
             </div>
             <div class="container">
+                @if (count($errors)>0)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>@foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>      
+                    </ul>
+                </div>
+            @endif
                 <a href="{{route('masterpegawai.create')}}" class="btn btn-primary">Create</a>
                 <br>
                 <br>
@@ -52,7 +63,11 @@
                             <td>
                                 <a href="masterpegawai/{{$data->id}}" class="btn btn-info btn-circle btn-sm"> <i class="fas fa-info"></i></a>
                                 <a href="masterpegawai/{{$data->id}}/edit" class="btn btn-sm btn-warning btn-circle "><i class="fas fa-edit"></i></a>
-                                <a href="" class="btn btn-sm btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                <form action="{{route('masterpegawai.destroy', $data->id)}}" method="POST" class="d-inline">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-danger btn-circle"><i class="fas fa-trash"></i></button>
+                                </form>
                             </td>
                             </tr>
                         @endforeach
